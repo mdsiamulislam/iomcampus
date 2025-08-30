@@ -28,6 +28,7 @@ class _WebViewScreenState extends State<WebViewScreen>
     with AutomaticKeepAliveClientMixin {
   late final WebViewController _controller;
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isLoading = true;
   bool _hasInternet = true;
   String _currentTitle = '';
@@ -265,7 +266,7 @@ class _WebViewScreenState extends State<WebViewScreen>
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.white),
           onPressed: ()  {
-            Scaffold.of(context).openDrawer();
+            _scaffoldKey.currentState!.openDrawer();
           },
         ),
       ),
