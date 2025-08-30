@@ -1,4 +1,4 @@
-package app.iom.campus.iom_campus_app
+package campus.iom.app
 
 import io.flutter.embedding.android.FlutterActivity
 

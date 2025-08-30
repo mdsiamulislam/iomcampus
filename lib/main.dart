@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Request necessary permissions
-  await _requestPermissions();
+  // await _requestPermissions();
 
   runApp(const CampusApp());
 }

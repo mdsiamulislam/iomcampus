@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const WebViewScreen(
       url: 'https://campus.iom.edu.bd/', // Replace with your campus website URL
       title: 'Campus',
-      key: ValueKey('campus'),
+      key: ValueKey('app'),
     ),
     const WebViewScreen(
       url: 'https://portal.iom.edu.bd/', // Replace with your student portal URL
