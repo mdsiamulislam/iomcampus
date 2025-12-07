@@ -1,16 +1,72 @@
-# iom_campus_app
+# 📚 IOM Campus  
+A modern student-centered LMS and campus management application built to simplify learning, communication, and academic activities for students.
 
-A new Flutter project.
+---
 
-## Getting Started
+## 🚀 Overview  
+**IOM Campus** is a complete digital student portal that provides easy access to classes, academic resources, exams, notices, and more.  
+This app offers a seamless learning experience with real-time updates, online examinations, and high-quality class video access.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🎯 Purpose  
+To provide students with a unified platform where they can access all academic resources, attend classes, take exams, and stay updated with campus activities — anytime, anywhere.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ⭐ Features  
+✔ **Class Video Access** – Watch recorded class lectures anytime  
+✔ **Online Exams** – Attend exams from mobile seamlessly  
+✔ **Class Routine** – Always stay updated with daily schedules  
+✔ **Notice Board** – Get real-time campus announcements  
+✔ **Results** – View exam results instantly  
+✔ **Attendance** – Track your daily and monthly attendance  
+✔ **Live Classes** – Join remote sessions conducted by teachers  
+✔ **Assignment Submission** – Upload and submit tasks digitally  
+✔ **Student Profile** – Manage personal details  
+✔ **Teacher Profile** – Learn more about your instructors  
+✔ **Payment System** – Manage fee payments easily  
+✔ **Study Materials** – Access lectures, PDFs, notes, and resources  
+✔ **Push Notifications** – Never miss important updates  
+
+---
+
+## 📱 Platforms  
+The app is available on:
+
+- **Android**
+
+---
+
+## 🛠️ Technologies Used  
+- **Flutter** – Cross-platform development 
+
+---
+
+## 📸 Screenshots  
+Add your screenshots inside the `assets/screenshots` folder and replace the paths below:
+
+```
+
+![Screenshot 1](assets/screenshots/screen1.png)
+![Screenshot 2](assets/screenshots/screen2.png)
+![Screenshot 3](assets/screenshots/screen3.png)
+
+````
+
+### 📲 Download Now
+
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+      alt="Get it on Google Play"
+      height="80">](https://play.google.com/store/apps/details?id=campus.iom.app)
+
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 💙 Support
+
+If you like this project, please ⭐ the repository!
