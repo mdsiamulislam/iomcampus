@@ -1,6 +1,9 @@
 # 📚 IOM Campus  
 A modern student-centered LMS and campus management application built to simplify learning, communication, and academic activities for students.
 
+<img width="1056" height="992" alt="Gemini_Generated_Image_4bzg0k4bzg0k4bzg" src="https://github.com/user-attachments/assets/6250a3f1-ddc4-448c-95e8-d0350afe013b" />
+
+
 ---
 
 ## 🚀 Overview  
