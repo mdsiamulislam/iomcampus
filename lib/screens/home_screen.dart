@@ -1,5 +1,6 @@
 // lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
+import 'package:iom_campus_app/core/local_storage/user_info.dart';
 import 'package:iom_campus_app/screens/webview_screen.dart';
 
 import '../main.dart';
@@ -29,6 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    print('User is logged in: ${UserInfo().isLoggedIn}');
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
