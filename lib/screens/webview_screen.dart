@@ -7,6 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 import 'dart:io';
+import '../core/universal/widgets/side_drawer.dart';
 import '../widgets/no_internet_widget.dart';
 import '../services/session_manager.dart';
 
@@ -243,6 +244,7 @@ class _WebViewScreenState extends State<WebViewScreen>
     super.build(context);
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           widget.title,
@@ -271,41 +273,7 @@ class _WebViewScreenState extends State<WebViewScreen>
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'My App Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context); // close drawer
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.info),
-              title: const Text('About'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
+        child: SideDrawer(),
       ),
       body: Stack(
         children: [
@@ -348,3 +316,4 @@ class _WebViewScreenState extends State<WebViewScreen>
     super.dispose();
   }
 }
+

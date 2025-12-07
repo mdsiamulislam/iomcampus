@@ -66,11 +66,11 @@ plugins {
 }
 
 // Load keystore properties
-val keystoreProperties = Properties()
-val keystorePropertiesFile = rootProject.file("key.properties")
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-}
+//val keystoreProperties = Properties()
+//val keystorePropertiesFile = rootProject.file("key.properties")
+//if (keystorePropertiesFile.exists()) {
+//    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+//}
 
 android {
     namespace = "campus.iom.app"
@@ -95,23 +95,23 @@ android {
         versionName = flutter.versionName
     }
 
-    signingConfigs {
-        create("release") {
-            keyAlias = "campus"
-            keyPassword = "Iom@2020"
-            storeFile = file("iom-release-key-Iom_2020.keystore")
-            storePassword = "Iom@2020"
-        }
-
-    }
-
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
-            isShrinkResources = false
-        }
-    }
+//    signingConfigs {
+//        create("release") {
+//            keyAlias = "campus"
+//            keyPassword = "Iom@2020"
+//            storeFile = file("iom-release-key-Iom_2020.keystore")
+//            storePassword = "Iom@2020"
+//        }
+//
+//    }
+//
+//    buildTypes {
+//        release {
+//            signingConfig = signingConfigs.getByName("release")
+//            isMinifyEnabled = false
+//            isShrinkResources = false
+//        }
+//    }
 }
 
 dependencies {
