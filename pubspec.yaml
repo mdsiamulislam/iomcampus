@@ -19,8 +19,7 @@ dependencies:
   # State Management
   get: ^4.7.3
 
-  # QR Code Scanner
-  mobile_scanner: ^7.1.3
+  url_launcher: ^6.3.2
 
   cupertino_icons: ^1.0.8
   flutter_launcher_icons: ^0.11.0
