@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iom_campus_app/core/local_storage/user_info.dart';
-import 'package:iom_campus_app/feature/auth/pages/admin_verification_screen.dart';
-import 'package:iom_campus_app/feature/geto/pages/scan_screen.dart';
+import 'package:iom_campus_app/screens/webview_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideDrawer extends StatefulWidget {
   const SideDrawer({super.key});
@@ -17,141 +17,167 @@ class _SideDrawerState extends State<SideDrawer> {
   @override
   void initState() {
     super.initState();
-    _checkAdminStatus();
-  }
-
-  void _checkAdminStatus() {
-    setState(() {
-      isAdmin = UserInfo().isLoggedIn;
-    });
+    isAdmin = UserInfo().isLoggedIn;
   }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       elevation: 12,
-      child: Column(
+      child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          // Top Profile Header
+          /// Header
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.green, Colors.green.shade700],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
               ),
             ),
-            currentAccountPicture: CircleAvatar(
+            currentAccountPicture: const CircleAvatar(
               backgroundColor: Colors.white,
-              child: Icon(
-                Icons.school,
-                size: 40,
-                color: Colors.green,
-              ),
+              child: Icon(Icons.school, size: 38, color: Colors.green),
             ),
             accountName: Text(
               isAdmin ? UserInfo().name : "IOM Campus",
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             accountEmail: Text(
-              isAdmin ? UserInfo().email : "Biggest Online Madrasha In Asia",
-              style: TextStyle(fontSize: 13),
+              isAdmin
+                  ? UserInfo().email
+                  : "Biggest Online Madrasha In Asia",
+              style: const TextStyle(fontSize: 13),
             ),
           ),
 
-          // Drawer Items
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                _drawerItem(
-                  icon: Icons.home_outlined,
-                  text: "Home",
-                  onTap: () => Navigator.pop(context),
-                ),
-
-                // Show only if admin
-                if (isAdmin)
-                  _drawerItem(
-                    icon: Icons.document_scanner_outlined,
-                    text: "Manage Get Together",
-                    onTap: () {
-                      Get.to(() => ScanScreen());
-                    },
-                  ),
-              ],
-            ),
+          /// Academic Section
+          _sectionTitle("Academic"),
+          _drawerItem(
+            icon: Icons.school_outlined,
+            text: "IOM Main Website",
+            url: "https://iom.edu.bd/",
           ),
 
-          // Bottom Button (Join or Logout)
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 48),
-                backgroundColor: isAdmin ? Colors.red : Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              icon: Icon(
-                isAdmin ? Icons.logout : Icons.login,
-                color: Colors.white,
-              ),
-              label: Text(
-                isAdmin ? "Logout" : "Join As Administrator",
-                style: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-              onPressed: () async {
-                if (isAdmin) {
-                  // Logout
-                  await UserInfo().clearUser();
-                  setState(() {
-                    isAdmin = false;
-                  });
-                  Get.snackbar(
-                    "Logged Out",
-                    "You have been logged out successfully",
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: Colors.red,
-                    colorText: Colors.white,
-                  );
-                } else {
-                  // Navigate to Admin Verification
-                  final result = await Get.to(() => AdminVerificationScreen());
-                  // Refresh admin status when coming back
-                  if (result == true || mounted) {
-                    _checkAdminStatus();
-                  }
-                }
-              },
-            ),
+          const Divider(),
+
+          /// Others Section
+          _sectionTitle("Others & Services"),
+          _drawerItem(
+            icon: Icons.shopping_bag_outlined,
+            text: "Hadia Shop",
+            url: "https://shop.iom.edu.bd/",
+          ),
+          _drawerItem(
+            icon: Icons.menu_book_outlined,
+            text: "E-Library",
+            url: "https://elibrary.iom.edu.bd/",
+          ),
+          _drawerItem(
+            icon: Icons.question_answer_outlined,
+            text: "Ifatwa",
+            url: "https://ifatwa.info/",
+          ),
+          _drawerItem(
+            icon: Icons.people_outline,
+            text: "Ummah QA",
+            url: "https://ummahqa.com/",
+          ),
+          _drawerItem(
+            icon: Icons.account_balance_outlined,
+            text: "Ahlia",
+            url: "https://ahlia.org/",
+          ),
+          _drawerItem(
+            icon: Icons.apartment_outlined,
+            text: "UIS",
+            url: "https://uis.edu.bd/",
+          ),
+          _drawerItem(
+            icon: Icons.local_hospital_outlined,
+            text: "I Clinic",
+            url: "http://iclinicbd.com/",
+          ),
+          _drawerItem(
+            icon: Icons.school,
+            text: "UIS BD",
+            url: "https://uisbd.org/",
+          ),
+
+          const Divider(),
+
+          /// Social Section
+          _sectionTitle("IOM Social Pages"),
+          _drawerItem(
+            icon: Icons.facebook,
+            text: "IRC",
+            url: "https://www.facebook.com/iomirc",
+            isSocial: true,
+          ),
+          _drawerItem(
+            icon: Icons.facebook,
+            text: "IMC",
+            url: "https://www.facebook.com/imciom",
+            isSocial: true,
+          ),
+          _drawerItem(
+            icon: Icons.facebook,
+            text: "IBD",
+            url: "https://www.facebook.com/iom.ibd",
+            isSocial: true,
+          ),
+          _drawerItem(
+            icon: Icons.facebook,
+            text: "IUC",
+            url: "https://www.facebook.com/iuciom",
+            isSocial: true,
           ),
         ],
       ),
     );
   }
 
-  // Drawer Item Builder
-  Widget _drawerItem({
-    required IconData icon,
-    required String text,
-    required VoidCallback onTap,
-  }) {
-    return ListTile(
-      leading: Icon(icon, size: 24, color: Colors.green.shade700),
-      title: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+  /// Section Title Widget
+  Widget _sectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
+      child: Text(
+        title.toUpperCase(),
+        style: TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.bold,
+          color: Colors.green.shade700,
         ),
       ),
-      onTap: onTap,
-      horizontalTitleGap: 12,
     );
   }
+
+  /// Drawer Item Widget
+  Widget _drawerItem({
+    bool isSocial = false,
+    required IconData icon,
+    required String text,
+    required String url,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: Colors.green.shade700),
+      title: Text(text, style: const TextStyle(fontSize: 15)),
+      onTap: () {
+        Get.back();
+        if(isSocial){
+          _launchUrl(url);
+        }else{
+          Get.to(() => WebViewScreen(url: url, title: text));
+        }
+      },
+    );
+  }
+
+
+
+  Future<void> _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
 }
