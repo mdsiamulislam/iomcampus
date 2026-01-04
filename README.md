@@ -37,39 +37,6 @@ To provide students with a unified platform where they can access all academic r
 ## 📱 Platforms  
 The app is available on:
 
-- **Android**
-
----
-
-## 🛠️ Technologies Used  
-- **Flutter** – Cross-platform development 
-
----
-
-## 📸 Screenshots  
-Add your screenshots inside the `assets/screenshots` folder and replace the paths below:
-
-```
-
-![Screenshot 1](assets/screenshots/screen1.png)
-![Screenshot 2](assets/screenshots/screen2.png)
-![Screenshot 3](assets/screenshots/screen3.png)
-
-````
-
-### 📲 Download Now
-
 [<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
       alt="Get it on Google Play"
       height="80">](https://play.google.com/store/apps/details?id=campus.iom.app)
-
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## 💙 Support
-
-If you like this project, please ⭐ the repository!
